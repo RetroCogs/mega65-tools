@@ -3,8 +3,8 @@ arch: amd64
 dist: focal
 branches:
   except:
-    - CI-latest
-    - CI-refactor-latest
+    - /CI-.+$/
+    - refactor_m65
 
 matrix:
   include:
