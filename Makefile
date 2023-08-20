@@ -254,6 +254,10 @@ arcmac: $(TOOLSMAC)
 # check if WIN_CROSS_BUILD is enabled or if we are on WINDOWS
 win_build_check:
 ifneq ($(OS), Windows_NT)
+ifneq (,$(findstring MINGW64_NT,$(OS)))
+		echo "Detected MINGW under Windows..."
+else
+	echo OS=$(OS)
 	@if [ -z "$(WIN_CROSS_BUILD)" ] || [ "$(WIN_CROSS_BUILD)" -ne "1" ] ; then \
 		echo ""; \
 		echo "Please set env WIN_CROSS_BUILD=1 to enable windows builds on linux."; \
@@ -263,6 +267,10 @@ ifneq ($(OS), Windows_NT)
 		exit 1; \
 	fi
 endif
+endif
+
+WINCC=gcc
+WINCOPT+=-DWINDOWS -g -O0
 
 tests: $(TESTS)
 

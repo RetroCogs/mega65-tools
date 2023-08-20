@@ -22,3 +22,7 @@ compiler=gcc
 compiler.version={{ vars.cc_version }}
 compiler.libcxx=libstdc++11
 build_type=Release
+
+[conf]
+tools.microsoft.bash:subsystem=msys2
+tools.microsoft.bash:path=c:/Jenkins/msys64/usr/bin/bash
